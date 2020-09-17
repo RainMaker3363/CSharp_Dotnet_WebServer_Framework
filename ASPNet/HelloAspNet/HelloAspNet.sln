@@ -3,17 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30503.244
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloMVC", "HelloMVC\HelloMVC.csproj", "{7D8C3CED-43E7-47B5-B445-1CEB1FF9F372}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelloRazor", "HelloRazor\HelloRazor.csproj", "{4422D072-ADB0-4382-AA9E-B6B8463EE1A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloRazor", "HelloRazor\HelloRazor.csproj", "{4422D072-ADB0-4382-AA9E-B6B8463EE1A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelloWebAPI", "HelloWebAPI\HelloWebAPI.csproj", "{E22A430E-B0E3-43AA-A660-41CB740373CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloWebAPI", "HelloWebAPI\HelloWebAPI.csproj", "{E22A430E-B0E3-43AA-A660-41CB740373CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelloEmpty", "HelloEmpty\HelloEmpty.csproj", "{CEAACA36-5D07-415C-B1A6-739AE32E1FC8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloEmpty", "HelloEmpty\HelloEmpty.csproj", "{CEAACA36-5D07-415C-B1A6-739AE32E1FC8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelloBlazorServer", "HelloBlazorServer\HelloBlazorServer.csproj", "{96466439-55F8-4C77-96C2-3F764B953368}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloBlazorServer", "HelloBlazorServer\HelloBlazorServer.csproj", "{96466439-55F8-4C77-96C2-3F764B953368}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelloBlazorClient", "HelloBlazorClient\HelloBlazorClient.csproj", "{483E7200-0FAD-441B-B790-05B498A02341}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloBlazorClient", "HelloBlazorClient\HelloBlazorClient.csproj", "{483E7200-0FAD-441B-B790-05B498A02341}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloMVC", "HelloMVC\HelloMVC.csproj", "{16B417A7-B203-41D8-BA22-A3AF58BDB8E1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,10 +21,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7D8C3CED-43E7-47B5-B445-1CEB1FF9F372}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7D8C3CED-43E7-47B5-B445-1CEB1FF9F372}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7D8C3CED-43E7-47B5-B445-1CEB1FF9F372}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7D8C3CED-43E7-47B5-B445-1CEB1FF9F372}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4422D072-ADB0-4382-AA9E-B6B8463EE1A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4422D072-ADB0-4382-AA9E-B6B8463EE1A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4422D072-ADB0-4382-AA9E-B6B8463EE1A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -45,6 +41,10 @@ Global
 		{483E7200-0FAD-441B-B790-05B498A02341}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{483E7200-0FAD-441B-B790-05B498A02341}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{483E7200-0FAD-441B-B790-05B498A02341}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16B417A7-B203-41D8-BA22-A3AF58BDB8E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16B417A7-B203-41D8-BA22-A3AF58BDB8E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16B417A7-B203-41D8-BA22-A3AF58BDB8E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16B417A7-B203-41D8-BA22-A3AF58BDB8E1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

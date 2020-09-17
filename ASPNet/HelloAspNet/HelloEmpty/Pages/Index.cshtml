@@ -1,0 +1,21 @@
+﻿@page
+
+@model HelloEmpty.Pages.IndexModel
+
+<html>
+<head>
+    <title>Hello Razor Pages !</title>
+</head>
+<body>
+    <h1>@Model.HelloMsg.Messsage</h1>
+    <hr />
+    <h2>@Model.Noti</h2>
+    <form method="post">
+        <label asp-for="HelloMsg.Messsage">Enter Message</label>
+        <br />
+        <input type="text" asp-for="HelloMsg.Messsage" />
+        <br />
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
