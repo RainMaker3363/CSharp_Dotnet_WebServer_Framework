@@ -1,0 +1,77 @@
+﻿@page "/user"
+
+@using BlazorApp.Data;
+
+<h3>Online Users</h3>
+
+<p>
+    Users : <b>@users.Count()</b>
+</p>
+<br />
+
+<ul class="list-group">
+    @foreach(var user in users)
+    {
+        <li @key="user" class="list-group-item">
+            <button type="button" class="btn btn-link" @onclick="(()=> KickUser(user))">[Kick]</button>
+            <label>@user.Name</label>
+        </li>
+    }
+
+</ul>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <input class="form-control" placeholder="Add User" @bind-value="_inputName" />
+        </div>
+        <div class="col">
+            <!-- 속성(attribute)에도 Binding을 할 수 있다-->
+            <!-- Condtional attribute 속성 자체에 조건을 붙일 수도 있다.-->
+            <button class=@_buttonClass type="button" @onclick="AddUser" disabled=@(users.Count() >= 5)>Add User</button>
+        </div>
+    </div>
+
+</div>
+
+
+@code {
+    List<UserData> users = new List<UserData>();
+
+    string _inputName;
+    string _buttonClass = "btn btn-primary";
+
+    protected override void OnInitialized()
+    {
+        users.Add(new UserData() { Name = "RainMaker" });
+        users.Add(new UserData() { Name = "Fake" });
+        users.Add(new UserData() { Name = "Deft" });
+
+        RefreshButton();
+    }
+
+    void AddUser()
+    {
+        users.Add(new UserData() { Name = _inputName });
+        _inputName = "";
+        RefreshButton();
+    }
+
+    void KickUser(UserData user)
+    {
+        users.Remove(user);
+        RefreshButton();
+    }
+
+    void RefreshButton()
+    {
+        if(users.Count() % 2 == 0)
+        {
+            _buttonClass = "btn btn-primary";
+        }
+        else
+        {
+            _buttonClass = "btn btn-secondary";
+        }
+    }
+}
