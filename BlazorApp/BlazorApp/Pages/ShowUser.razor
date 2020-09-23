@@ -1,0 +1,48 @@
+﻿@using BlazorApp.Data;
+
+<p>
+    Users : <b>@Users.Count()</b>
+</p>
+<br />
+
+<ul class="list-group">
+    @foreach (var user in Users)
+    {
+        <li @key="user" class="list-group-item">
+            <button type="button" class="btn btn-link" @onclick="(()=> KickUser(user))">[Kick]</button>
+            <label style="color:@Color">@user.Name</label>
+        </li>
+    }
+
+</ul>
+
+@code {
+    [CascadingParameter(Name = "ThemeColor")]
+    string Color { get; set; }
+
+
+    [Parameter]
+    public List<UserData> Users { get; set; }
+
+    [Parameter]
+    public EventCallback CallbackTest { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Users.Add(new UserData() { Name = "RainMaker" });
+        Users.Add(new UserData() { Name = "Fake" });
+        Users.Add(new UserData() { Name = "Deft" });
+    }
+
+    public void AddUser(UserData user)
+    {
+        Users.Add(user);
+    }
+
+    public void KickUser(UserData user)
+    {
+        Users.Remove(user);
+
+        CallbackTest.InvokeAsync(null);
+    }
+}

@@ -3,6 +3,8 @@
 @using BlazorApp.Data
 @inject WeatherForecastService ForecastService
 
+
+
 <h1>Weather forecast</h1>
 
 <p>This component demonstrates fetching data from a service.</p>
@@ -13,7 +15,22 @@
 }
 else
 {
-    <table class="table">
+    <TableTemplate items="forecasts" TItem="WeatherForecast">
+        <Header>
+            <th>Date</th>
+            <th>Temp. (C)</th>
+            <th>Temp. (F)</th>
+            <th>Summary</th>
+        </Header>
+        <Row Context="forecast">
+            <td>@forecast.Date.ToShortDateString()</td>
+            <td>@forecast.TemperatureC</td>
+            <td>@forecast.TemperatureF</td>
+            <td>@forecast.Summary</td>
+        </Row>
+    </TableTemplate>
+
+    @*<table class="table">
         <thead>
             <tr>
                 <th>Date</th>
@@ -33,7 +50,7 @@ else
                 </tr>
             }
         </tbody>
-    </table>
+    </table>*@
 }
 
 @code {

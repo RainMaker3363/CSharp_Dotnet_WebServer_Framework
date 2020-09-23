@@ -4,21 +4,21 @@
 
 <h3>Online Users</h3>
 
-<p>
-    Users : <b>@users.Count()</b>
-</p>
-<br />
-
-<ul class="list-group">
-    @foreach(var user in users)
+<label>Theme Color</label>
+<select class="form-control" @bind="_selectColor">
+    @foreach(var option in _options)
     {
-        <li @key="user" class="list-group-item">
-            <button type="button" class="btn btn-link" @onclick="(()=> KickUser(user))">[Kick]</button>
-            <label>@user.Name</label>
-        </li>
+        <option value="@option">
+            @option
+        </option>
     }
+</select>
 
-</ul>
+<CascadingValue Name="ThemeColor" Value="_selectColor">
+    <ShowUser Users="users" CallbackTest="CallbackTestFunc" @ref="_showUser"></ShowUser>
+</CascadingValue>
+
+<br />
 
 <div class="container">
     <div class="row">
@@ -28,7 +28,7 @@
         <div class="col">
             <!-- 속성(attribute)에도 Binding을 할 수 있다-->
             <!-- Condtional attribute 속성 자체에 조건을 붙일 수도 있다.-->
-            <button class=@_buttonClass type="button" @onclick="AddUser" disabled=@(users.Count() >= 5)>Add User</button>
+            <button class="btn btn-primary" type="button" @onclick="AddUser" disabled=@(users.Count() >= 5)>Add User</button>
         </div>
     </div>
 
@@ -36,42 +36,30 @@
 
 
 @code {
+
+    string _selectColor = "Green";
+    List<string> _options = new List<string>() { "Green", "Red", "Blue" };
+
     List<UserData> users = new List<UserData>();
+    ShowUser _showUser;
 
     string _inputName;
     string _buttonClass = "btn btn-primary";
 
-    protected override void OnInitialized()
-    {
-        users.Add(new UserData() { Name = "RainMaker" });
-        users.Add(new UserData() { Name = "Fake" });
-        users.Add(new UserData() { Name = "Deft" });
-
-        RefreshButton();
-    }
-
     void AddUser()
     {
-        users.Add(new UserData() { Name = _inputName });
+        _showUser.AddUser(new UserData() { Name = _inputName });
         _inputName = "";
-        RefreshButton();
     }
 
     void KickUser(UserData user)
     {
-        users.Remove(user);
-        RefreshButton();
+        //users.Remove(user);
+        _showUser.KickUser(user);
     }
 
-    void RefreshButton()
+    void CallbackTestFunc()
     {
-        if(users.Count() % 2 == 0)
-        {
-            _buttonClass = "btn btn-primary";
-        }
-        else
-        {
-            _buttonClass = "btn btn-secondary";
-        }
+        _inputName = "CallbackTest";
     }
 }
