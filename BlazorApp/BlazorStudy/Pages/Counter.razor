@@ -1,0 +1,19 @@
+﻿@page "/counter"
+@page "/counter/{CurrentCount:int}"
+@*@layout MainLayout2*@
+
+<h1>Counter</h1>
+
+<p>Current count: @CurrentCount</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
+@code {
+    private void IncrementCount()
+    {
+        CurrentCount++;
+    }
+
+    [Parameter]
+    public int CurrentCount { get; set; }
+}
