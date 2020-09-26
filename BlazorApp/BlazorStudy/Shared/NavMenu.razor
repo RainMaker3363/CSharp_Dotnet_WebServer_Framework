@@ -1,4 +1,7 @@
-﻿<div class="top-row pl-4 navbar navbar-dark">
+﻿@inject BlazorStudy.Data.CounterState CounterState
+@implements IDisposable
+
+<div class="top-row pl-4 navbar navbar-dark">
     <a class="navbar-brand" href="">BlazorStudy</a>
     <button class="navbar-toggler" @onclick="ToggleNavMenu">
         <span class="navbar-toggler-icon"></span>
@@ -22,7 +25,16 @@
                 <span class="oi oi-list-rich" aria-hidden="true"></span> Fetch data
             </NavLink>
         </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="JSInterop">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> JSInterop
+            </NavLink>
+        </li>
     </ul>
+</div>
+
+<div>
+    <p style="color:white">Counter : @CounterState.Count </p>
 </div>
 
 @code {
@@ -33,5 +45,20 @@
     private void ToggleNavMenu()
     {
         collapseNavMenu = !collapseNavMenu;
+    }
+
+    protected override void OnInitialized()
+    {
+        CounterState.OnStateChanged += OnStateChanged;
+    }
+
+    void IDisposable.Dispose()
+    {
+        CounterState.OnStateChanged -= OnStateChanged;
+    }
+
+    void OnStateChanged()
+    {
+        this.StateHasChanged();
     }
 }

@@ -1,0 +1,36 @@
+﻿@page "/JSInterop"
+@inject IJSRuntime JSRunTime;
+
+<h3>JSInterop</h3>
+
+<div>
+    <button type="button" class="btn btn-primary" @onclick="HelloWorld">
+        Touch ME!
+    </button>
+</div>
+
+<br />
+
+<div>
+    <button type="button" class="btn btn-primary" @onclick="InputName">
+        Input Name
+    </button>
+    <p>@_name</p>
+</div>
+
+@code {
+
+    string _name = string.Empty;
+
+    public async void HelloWorld()
+    {
+        await JSRunTime.InvokeVoidAsync("testfunction.helloWorld", null);
+    }
+
+    public async void InputName()
+    {
+        _name = await JSRunTime.InvokeAsync<string>("testfunction.inputName", "Input Name");
+
+        StateHasChanged();
+    }
+}

@@ -1,19 +1,17 @@
 ﻿@page "/counter"
-@page "/counter/{CurrentCount:int}"
+@*@page "/counter/{CurrentCount:int}"*@
 @*@layout MainLayout2*@
+@inject BlazorStudy.Data.CounterState CounterState
 
 <h1>Counter</h1>
 
-<p>Current count: @CurrentCount</p>
+<p>Current count: @CounterState.Count</p>
 
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 
 @code {
     private void IncrementCount()
     {
-        CurrentCount++;
+        CounterState.Count = CounterState.Count + 1;
     }
-
-    [Parameter]
-    public int CurrentCount { get; set; }
 }
